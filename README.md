@@ -1,8 +1,9 @@
 # color-hash.kt
 [![](https://jitpack.io/v/unhappychoice/color-hash.kt.svg)](https://jitpack.io/#unhappychoice/color-hash.kt)
+[![codecov](https://codecov.io/gh/unhappychoice/color-hash.kt/branch/master/graph/badge.svg)](https://codecov.io/gh/unhappychoice/color-hash.kt)
 
 https://github.com/zenozeng/color-hash implementation by Kotlin/Android
-
+ 
 ## Installation
 
 ```groovy
