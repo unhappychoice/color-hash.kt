@@ -1,0 +1,15 @@
+machine:
+  java:
+    version: openjdk7
+dependencies:
+  pre:
+    - echo y | android update sdk --no-ui --all --filter tools,platform-tools,build-tools-23.0.3
+  cache_directories:
+    - ~/.android
+    - ~/android
+test:
+  override:
+    - ./gradlew test
+    - ./gradlew jacocoTestReport
+  post:
+    - bash <(curl -s https://codecov.io/bash) -t c6baed7c-74c0-4042-8d37-dc0196b1374b

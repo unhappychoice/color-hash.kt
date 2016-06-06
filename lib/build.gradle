@@ -14,6 +14,7 @@ plugins {
 apply plugin: 'com.android.library'
 apply plugin: 'android-maven'
 apply plugin: 'kotlin-android'
+apply plugin: 'jacoco-android'
 
 project.version = scmVersion.version
 group='com.github.unhappychoice.colorhash'
@@ -45,11 +46,29 @@ android {
     }
 }
 
+jacocoAndroidUnitTestReport {
+    html.enabled true
+    xml.enabled true
+    csv.enabled false
+
+    excludes += [
+            '**/R.class',
+            '**/R$*.class',
+            '**/*$ViewInjector*.*',
+            '**/*$ViewBinder*.*',
+            '**/BuildConfig.*',
+            '**/Manifest*.*',
+            '**/*$inlined$*.*',
+            '**/*Module.*',
+            '**/*Dagger*.*',
+            '**/*MembersInjector*.*',
+            '**/*_Provide*Factory*.*'
+    ]
+}
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.4.0'
-    compile 'com.android.support:design:23.4.0'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     testCompile 'junit:junit:4.12'
     testCompile "com.winterbe:expekt:0.4.0"
