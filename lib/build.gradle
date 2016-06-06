@@ -74,4 +74,5 @@ dependencies {
     testCompile "com.winterbe:expekt:0.4.0"
     testCompile "io.polymorphicpanda.kspec:kspec-core:0.4.0"
     testCompile "io.polymorphicpanda.kspec:kspec-junit-runner:0.4.0"
+    testCompile "org.robolectric:robolectric:3.0"
 }
