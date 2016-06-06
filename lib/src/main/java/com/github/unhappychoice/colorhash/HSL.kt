@@ -16,13 +16,19 @@ class HSL(val value: Triple<Double, Double, Double>) {
         val p = 2f * lightness - q
 
         val rgb = listOf(h + 1f / 3f, h, h - 1f / 3f).map { color ->
+            val co = when {
+                color < 0 -> color + 1
+                color > 1 -> color - 1
+                else -> color
+            }
+
             val c = when {
-                (color < 1f / 6f) -> p + (q - p) * 6.0 * color
-                (color < 0.5) -> q.toDouble()
-                (color < 2f / 3f) -> p + (q - p) * 6.0 * ( 2f / 3f - color)
+                (co < 1f / 6f) -> p + (q - p) * 6.0 * co
+                (co < 0.5) -> q.toDouble()
+                (co < 2f / 3f) -> p + (q - p) * 6.0 * ( 2f / 3f - co)
                 else -> p.toDouble()
             }
-            Math.round(c * 255).toInt()
+            Math.max(0, Math.round(c * 255).toInt())
         }
 
         return RGB(Triple(rgb[0], rgb[1], rgb[2]))
