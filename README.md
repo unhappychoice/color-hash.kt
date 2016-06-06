@@ -14,6 +14,9 @@ val color = ColorHash(
     minHue: Int = 0,
     maxHue: Int = 360
 ).toColor() // returns Android Color class
+
+// or just use
+val color2 = "some hash string".toColor()
 ```
 
 ## Installation
