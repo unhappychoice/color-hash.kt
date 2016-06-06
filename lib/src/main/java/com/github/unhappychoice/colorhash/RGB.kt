@@ -14,4 +14,6 @@ class RGB(val value: Triple<Int, Int, Int>) {
     }
 
     fun toColor(): Int = Color.rgb(value.first, value.second, value.third)
+
+    override fun equals(other: Any?): Boolean = other is RGB && other.value == value
 }

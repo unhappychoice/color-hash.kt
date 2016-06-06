@@ -34,4 +34,6 @@ class HSL(val value: Triple<Double, Double, Double>) {
         }
         return Color.HSVToColor(array)
     }
+
+    override fun equals(other: Any?): Boolean = other is HSL && other.value == value
 }

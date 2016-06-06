@@ -51,4 +51,8 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.android.support:design:23.4.0'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    testCompile 'junit:junit:4.12'
+    testCompile "com.winterbe:expekt:0.4.0"
+    testCompile "io.polymorphicpanda.kspec:kspec-core:0.4.0"
+    testCompile "io.polymorphicpanda.kspec:kspec-junit-runner:0.4.0"
 }
