@@ -22,20 +22,20 @@ class ColorHashTest: KSpec() {
             describe("#Lightness & Saturation") {
                 it("should return the hash color based on default lightness and saturation") {
                     val hsl = ColorHash("").toHSL()
-                    expect(hsl.value.second).to.equal(0.35)
-                    expect(hsl.value.third).to.equal(0.35)
+                    expect(hsl.saturation).to.equal(0.35)
+                    expect(hsl.lightness).to.equal(0.35)
                 }
 
                 it("should return the hash color based on the given lightness and saturation") {
                     val hsl = ColorHash("", listOf(0.5), listOf(0.5)).toHSL()
-                    expect(hsl.value.second).to.equal(0.5)
-                    expect(hsl.value.third).to.equal(0.5)
+                    expect(hsl.saturation).to.equal(0.5)
+                    expect(hsl.lightness).to.equal(0.5)
                 }
 
                 it("should return the hash color based on the given lightness array and saturation array") {
                     var hsl = ColorHash("", listOf(0.9, 1.0), listOf(0.9, 1.0)).toHSL()
-                    expect(hsl.value.second).to.equal(0.9)
-                    expect(hsl.value.third).to.equal(0.9)
+                    expect(hsl.saturation).to.equal(0.9)
+                    expect(hsl.lightness).to.equal(0.9)
                 }
             }
 
@@ -52,7 +52,7 @@ class ColorHashTest: KSpec() {
 
                 it("should returns RGB") {
                     val rgb = ColorHash("hex color").toRGB()
-                    expect(rgb).to.equal(RGB(Triple(197, 181, 135)))
+                    expect(rgb).to.equal(RGB(197, 181, 135))
                 }
             }
 
@@ -62,7 +62,7 @@ class ColorHashTest: KSpec() {
                 }
 
                 val colorHash = ColorHash("abc")
-                val hsl = HSL(Triple((customHash("abc") % 359).toDouble(), 0.35, 0.35))
+                val hsl = HSL((customHash("abc") % 359).toDouble(), 0.35, 0.35)
                 val rgb = hsl.toRGB()
                 val hex = hsl.toRGB().toHex()
 

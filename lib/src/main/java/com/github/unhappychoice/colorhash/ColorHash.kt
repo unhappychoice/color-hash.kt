@@ -28,7 +28,7 @@ class ColorHash(
 
         val light = this.lightness[(hash % this.lightness.size).toInt()]
 
-        return HSL(Triple(hue.toDouble(), sat, light))
+        return HSL(hue.toDouble(), sat, light)
     }
 
     fun toRGB() = toHSL().toRGB()

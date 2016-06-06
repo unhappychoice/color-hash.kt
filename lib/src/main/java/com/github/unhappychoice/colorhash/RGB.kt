@@ -2,9 +2,9 @@ package com.github.unhappychoice.colorhash
 
 import android.graphics.Color
 
-class RGB(val value: Triple<Int, Int, Int>) {
+data class RGB(val red: Int, val green: Int, val blue: Int) {
     fun toHex(): String {
-        return "#" + this.value.toList()
+        return "#" + listOf(red, green, blue)
                 .reversed()
                 .map {
                     when {
@@ -14,7 +14,5 @@ class RGB(val value: Triple<Int, Int, Int>) {
                 }.reduce { s, acc -> acc + s }
     }
 
-    fun toColor(): Int = Color.rgb(value.first, value.second, value.third)
-
-    override fun equals(other: Any?): Boolean = other is RGB && other.value == value
+    fun toColor(): Int = Color.rgb(red, green, blue)
 }
