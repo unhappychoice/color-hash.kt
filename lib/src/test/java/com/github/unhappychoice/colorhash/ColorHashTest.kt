@@ -1,5 +1,6 @@
 package com.github.unhappychoice.colorhash
 
+import android.graphics.Color
 import com.winterbe.expekt.expect
 import io.polymorphicpanda.kspec.*
 import io.polymorphicpanda.kspec.junit.JUnitKSpecRunner
@@ -9,6 +10,15 @@ import org.junit.runner.RunWith
 class ColorHashTest: KSpec() {
     override fun spec() {
         describe("ColorHash") {
+            it("has default properties") {
+                val colorHash = ColorHash("hash")
+                expect(colorHash.string).to.equal("hash")
+                expect(colorHash.lightness).to.equal(listOf(0.35, 0.5, 0.65))
+                expect(colorHash.saturation).to.equal(listOf(0.35, 0.5, 0.65))
+                expect(colorHash.minHue).to.equal(0)
+                expect(colorHash.maxHue).to.equal(360)
+            }
+
             describe("#Lightness & Saturation") {
                 it("should return the hash color based on default lightness and saturation") {
                     val hsl = ColorHash("").toHSL()
@@ -26,6 +36,23 @@ class ColorHashTest: KSpec() {
                     var hsl = ColorHash("", listOf(0.9, 1.0), listOf(0.9, 1.0)).toHSL()
                     expect(hsl.value.second).to.equal(0.9)
                     expect(hsl.value.third).to.equal(0.9)
+                }
+            }
+
+            describe("transform methods") {
+                xit("should returns android color") {
+                    val color = ColorHash("color").toColor()
+                    expect(color).to.equal(Color.HSVToColor(floatArrayOf(0.0f, 0.0f, 0.0f)))
+                }
+
+                it("should returns hex string") {
+                    val hex = ColorHash("hex color").toHexString()
+                    expect(hex).to.equal("#c5b587")
+                }
+
+                it("should returns RGB") {
+                    val rgb = ColorHash("hex color").toRGB()
+                    expect(rgb).to.equal(RGB(Triple(197, 181, 135)))
                 }
             }
 
