@@ -5,9 +5,10 @@ import android.graphics.Color
 class RGB(val value: Triple<Int, Int, Int>) {
     fun toHex(): String {
         return "#" + this.value.toList()
+                .reversed()
                 .map {
                     when {
-                        it < 16 -> "0"
+                        it < 16 -> "0${Integer.toHexString(it.toInt())}"
                         else -> Integer.toHexString(it.toInt())
                     }
                 }.reduce { s, acc -> acc + s }
