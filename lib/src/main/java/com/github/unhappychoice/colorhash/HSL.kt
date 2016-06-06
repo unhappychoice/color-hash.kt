@@ -2,10 +2,8 @@ package com.github.unhappychoice.colorhash
 
 import android.graphics.Color
 
-class HSL(val value: Triple<Double, Double, Double>) {
+data class HSL(val hue: Double, val saturation: Double, val lightness: Double) {
     fun toRGB(): RGB {
-        val (hue, saturation, lightness) = this.value
-
         val h = hue / 360f
 
         val q = when {
@@ -31,15 +29,11 @@ class HSL(val value: Triple<Double, Double, Double>) {
             Math.max(0, Math.round(c * 255).toInt())
         }
 
-        return RGB(Triple(rgb[0], rgb[1], rgb[2]))
+        return RGB(rgb[0], rgb[1], rgb[2])
     }
 
     fun toColor(): Int {
-        val array = this.value.let {
-            floatArrayOf(it.first.toFloat(), it.second.toFloat(), it.third.toFloat())
-        }
+        val array = floatArrayOf(hue.toFloat(), saturation.toFloat(), lightness.toFloat())
         return Color.HSVToColor(array)
     }
-
-    override fun equals(other: Any?): Boolean = other is HSL && other.value == value
 }

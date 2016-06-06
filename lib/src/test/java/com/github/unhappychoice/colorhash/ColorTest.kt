@@ -20,12 +20,12 @@ class ColorTest {
     }
 
     @Test fun RGB_toColor_should_return_android_color() {
-        val color = RGB(Triple(100, 100, 100)).toColor()
+        val color = RGB(100, 100, 100).toColor()
         assert(color == Color.rgb(100, 100, 100))
     }
 
     @Test fun HSL_toColor_should_return_android_color() {
-        val color = HSL(Triple(100.0, 100.0, 100.0)).toColor()
+        val color = HSL(100.0, 100.0, 100.0).toColor()
         assert(color == Color.HSVToColor(floatArrayOf(100.0f,100.0f, 100.0f)))
     }
 }

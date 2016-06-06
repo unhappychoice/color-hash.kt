@@ -12,11 +12,11 @@ class RGBTest(): KSpec() {
     override fun spec() {
         describe("RGB") {
             it("should return hex for rgb") {
-                val hex = RGB(Triple(255, 64, 0)).toHex()
+                val hex = RGB(255, 64, 0).toHex()
                 expect(hex).to.equal("#ff4000")
             }
             it("should return 6 digits hex for even small rgb values") {
-                val hex = RGB(Triple(1, 15, 16)).toHex()
+                val hex = RGB(1, 15, 16).toHex()
                 expect(hex).to.equal("#010f10")
             }
         }
