@@ -3,7 +3,19 @@
 [![codecov](https://codecov.io/gh/unhappychoice/color-hash.kt/branch/master/graph/badge.svg)](https://codecov.io/gh/unhappychoice/color-hash.kt)
 
 https://github.com/zenozeng/color-hash implementation by Kotlin/Android
- 
+
+## Usage
+
+```kotlin
+val color = ColorHash(
+    "some string", // string which you want to use as hash
+    listOf(0.35, 0.5, 0.65), // lightness list
+    listOf(0.35, 0.5, 0.65), // saturation list
+    minHue: Int = 0,
+    maxHue: Int = 360
+).toColor() // returns Android Color class
+```
+
 ## Installation
 
 ```groovy
