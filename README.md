@@ -1,4 +1,5 @@
 # color-hash.kt
+[![CircleCI](https://circleci.com/gh/unhappychoice/color-hash.kt.svg?style=svg)](https://circleci.com/gh/unhappychoice/color-hash.kt)
 [![](https://jitpack.io/v/unhappychoice/color-hash.kt.svg)](https://jitpack.io/#unhappychoice/color-hash.kt)
 [![codecov](https://codecov.io/gh/unhappychoice/color-hash.kt/branch/master/graph/badge.svg)](https://codecov.io/gh/unhappychoice/color-hash.kt)
 
