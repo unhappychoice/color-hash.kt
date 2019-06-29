@@ -2,6 +2,10 @@ buildscript {
     ext {
         kotlin_version = "1.0.1-2"
     }
+    repositories {
+        mavenCentral()
+        google()
+    }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
@@ -17,7 +21,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'jacoco-android'
 
 project.version = scmVersion.version
-group='com.github.unhappychoice.colorhash'
+group = 'com.github.unhappychoice.colorhash'
 
 scmVersion {
     tag {
