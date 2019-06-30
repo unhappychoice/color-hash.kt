@@ -8,19 +8,21 @@ buildscript {
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+        classpath 'com.dicedmelon.gradle:jacoco-android:0.1.4'
     }
 }
 
 plugins {
     id 'pl.allegro.tech.build.axion-release' version '1.3.4'
+    id "com.github.dcendents.android-maven" version "2.1"
 }
 
 apply plugin: 'com.android.library'
-apply plugin: 'android-maven'
 apply plugin: 'kotlin-android'
 apply plugin: 'jacoco-android'
 
-project.version = scmVersion.version
+version = scmVersion.version
 group = 'com.github.unhappychoice.colorhash'
 
 scmVersion {
@@ -71,12 +73,12 @@ jacocoAndroidUnitTestReport {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    testCompile 'junit:junit:4.12'
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    testCompile 'junit:junit:4.12'
-    testCompile "com.winterbe:expekt:0.4.0"
-    testCompile "io.polymorphicpanda.kspec:kspec-core:0.4.0"
-    testCompile "io.polymorphicpanda.kspec:kspec-junit-runner:0.4.0"
-    testCompile "org.robolectric:robolectric:3.0"
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
+    testImplementation "com.winterbe:expekt:0.4.0"
+    testImplementation "io.polymorphicpanda.kspec:kspec-core:0.4.0"
+    testImplementation "io.polymorphicpanda.kspec:kspec-junit-runner:0.4.0"
+    testImplementation "org.robolectric:robolectric:3.0"
 }
