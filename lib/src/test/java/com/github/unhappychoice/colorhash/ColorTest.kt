@@ -3,11 +3,9 @@ package com.github.unhappychoice.colorhash
 import android.graphics.Color
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.robolectric.RobolectricGradleTestRunner
-import org.robolectric.annotation.Config
+import org.robolectric.RobolectricTestRunner
 
-@RunWith(RobolectricGradleTestRunner::class)
-@Config(sdk = intArrayOf(21), constants = BuildConfig::class)
+@RunWith(RobolectricTestRunner::class)
 class ColorTest {
     @Test fun String_toColor_should_return_android_color() {
         val color = "color hash".toColor()
