@@ -2,6 +2,8 @@
 [![CircleCI](https://circleci.com/gh/unhappychoice/color-hash.kt.svg?style=shield)](https://circleci.com/gh/unhappychoice/color-hash.kt)
 [![](https://jitpack.io/v/unhappychoice/color-hash.kt.svg)](https://jitpack.io/#unhappychoice/color-hash.kt)
 [![codecov](https://codecov.io/gh/unhappychoice/color-hash.kt/branch/master/graph/badge.svg)](https://codecov.io/gh/unhappychoice/color-hash.kt)
+[![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/unhappychoice/color-hash.kt.svg)](https://libraries.io/github/unhappychoice/color-hash.kt)
+![GitHub](https://img.shields.io/github/license/unhappychoice/color-hash.kt.svg)
 
 https://github.com/zenozeng/color-hash implementation by Kotlin/Android
 
