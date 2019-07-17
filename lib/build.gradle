@@ -77,7 +77,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     testImplementation 'junit:junit:4.12'
     testImplementation 'junit:junit:4.12'
-    testImplementation "com.winterbe:expekt:0.4.0"
+    testImplementation "com.winterbe:expekt:0.5.0"
     testImplementation "io.polymorphicpanda.kspec:kspec-core:0.4.0"
     testImplementation "io.polymorphicpanda.kspec:kspec-junit-runner:0.4.0"
     testImplementation "org.robolectric:robolectric:3.0"
