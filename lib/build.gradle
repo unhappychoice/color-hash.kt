@@ -14,7 +14,7 @@ buildscript {
 }
 
 plugins {
-    id 'pl.allegro.tech.build.axion-release' version '1.10.2'
+    id 'pl.allegro.tech.build.axion-release' version '1.10.3'
     id "com.github.dcendents.android-maven" version "2.1"
 }
 
