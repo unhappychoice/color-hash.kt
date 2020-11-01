@@ -48,7 +48,7 @@ jobs:
           command: ./gradlew test
       - run:
           name: Create coverage report
-          command: ./gradlew jacocoTestReport
+          command: ./gradlew jacoco
       - run:
           name: Send coverage
           command: bash <(curl -s https://codecov.io/bash) -t c6baed7c-74c0-4042-8d37-dc0196b1374b

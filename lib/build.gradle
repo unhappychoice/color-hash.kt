@@ -1,26 +1,21 @@
 buildscript {
-    ext {
-        kotlin_version = "1.4.10"
-    }
     repositories {
         mavenCentral()
         google()
     }
     dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
-        classpath 'com.dicedmelon.gradle:jacoco-android:0.1.4'
     }
 }
 
 plugins {
+    id 'com.android.library'
     id 'pl.allegro.tech.build.axion-release' version '1.12.1'
     id "com.github.dcendents.android-maven" version "2.1"
+    id 'jacoco'
 }
 
-apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'jacoco-android'
 
 version = scmVersion.version
 group = 'com.github.unhappychoice.colorhash'
@@ -33,7 +28,7 @@ scmVersion {
 
 android {
     compileSdkVersion 29
-    buildToolsVersion '29.0.1'
+    buildToolsVersion '29.0.3'
 
     defaultConfig {
         minSdkVersion 16
@@ -52,33 +47,40 @@ android {
     }
 }
 
-jacocoAndroidUnitTestReport {
-    html.enabled true
-    xml.enabled true
-    csv.enabled false
-
-    excludes += [
-            '**/R.class',
-            '**/R$*.class',
-            '**/*$ViewInjector*.*',
-            '**/*$ViewBinder*.*',
-            '**/BuildConfig.*',
-            '**/Manifest*.*',
-            '**/*$inlined$*.*',
-            '**/*Module.*',
-            '**/*Dagger*.*',
-            '**/*MembersInjector*.*',
-            '**/*_Provide*Factory*.*'
-    ]
-}
-
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     testImplementation 'junit:junit:4.13.1'
     testImplementation 'junit:junit:4.13.1'
     testImplementation "com.winterbe:expekt:0.5.0"
     testImplementation "io.polymorphicpanda.kspec:kspec-core:0.4.0"
     testImplementation "io.polymorphicpanda.kspec:kspec-junit-runner:0.4.0"
     testImplementation "org.robolectric:robolectric:4.4"
+}
+
+
+tasks.withType(Test) {
+    jacoco.includeNoLocationClasses = true
+    jacoco.excludes = ['jdk.internal.*']
+}
+
+task jacoco(type: JacocoReport, dependsOn: "testDebugUnitTest") {
+    description = "Generate Jacoco coverage reports after running tests."
+    reports {
+        xml.enabled = true
+        html.enabled = true
+        classDirectories.setFrom(
+                files(
+                        fileTree(
+                                dir: './build/intermediates/javac/debug/compileDebugJavaWithJavac/classes',
+                                excludes: ['**/R.class', '**/R$*.class', '**/BuildConfig.class', '**/Manifest*.*', '**/*$inlined$*.*']
+                        ) + fileTree(
+                                dir: './build/tmp/kotlin-classes/debug',
+                                excludes: ['**/R.class', '**/R$*.class', '**/BuildConfig.class', '**/Manifest*.*', '**/*$inlined$*.*']
+                        )
+                )
+        )
+    }
+    sourceDirectories.from files('src/main/kotlin')
+    executionData.from files('build/jacoco/testDebugUnitTest.exec')
 }
