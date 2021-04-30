@@ -1,0 +1,15 @@
+version: 2
+updates:
+- package-ecosystem: gradle
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "12:00"
+    timezone: Asia/Tokyo
+  open-pull-requests-limit: 20
+  reviewers:
+  - unhappychoice
+  ignore:
+  - dependency-name: pl.allegro.tech.build.axion-release
+    versions:
+    - 1.13.0
