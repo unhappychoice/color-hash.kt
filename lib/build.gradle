@@ -10,7 +10,7 @@ buildscript {
 
 plugins {
     id 'com.android.library'
-    id 'pl.allegro.tech.build.axion-release' version '1.19.1'
+    id 'pl.allegro.tech.build.axion-release' version '1.20.1'
     id "com.github.dcendents.android-maven" version "2.1"
     id 'jacoco'
 }
