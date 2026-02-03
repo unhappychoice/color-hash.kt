@@ -39,7 +39,7 @@ class ColorHash(
         return (string + 'x').fold(0L) { acc, value ->
             when {
                 acc > MAX_SAFE_LONG -> acc / SEED2
-                else -> acc * SEED + value.toLong()
+                else -> acc * SEED + value.code.toLong()
             }
         }
     }
