@@ -1,21 +1,10 @@
-buildscript {
-    repositories {
-        mavenCentral()
-        google()
-    }
-    dependencies {
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
-    }
-}
-
 plugins {
     id 'com.android.library'
+    id 'org.jetbrains.kotlin.android' version "$kotlin_version"
     id 'pl.allegro.tech.build.axion-release' version '1.21.1'
-    id "com.github.dcendents.android-maven" version "2.1"
+    id 'maven-publish'
     id 'jacoco'
 }
-
-apply plugin: 'kotlin-android'
 
 version = scmVersion.version
 group = 'com.github.unhappychoice.colorhash'
@@ -27,12 +16,11 @@ scmVersion {
 }
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion '29.0.3'
+    namespace 'com.github.unhappychoice.colorhash'
+    compileSdk 35
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 29
+        minSdk 21
         versionCode 1
         versionName "1.0"
     }
@@ -41,6 +29,13 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
     }
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -51,10 +46,6 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     testImplementation 'junit:junit:4.13.2'
-    testImplementation 'junit:junit:4.13.2'
-    testImplementation "com.winterbe:expekt:0.5.0"
-    testImplementation "io.polymorphicpanda.kspec:kspec-core:0.4.0"
-    testImplementation "io.polymorphicpanda.kspec:kspec-junit-runner:0.4.0"
     testImplementation "org.robolectric:robolectric:4.16.1"
 }
 
@@ -67,8 +58,8 @@ tasks.withType(Test) {
 task jacoco(type: JacocoReport, dependsOn: "testDebugUnitTest") {
     description = "Generate Jacoco coverage reports after running tests."
     reports {
-        xml.enabled = true
-        html.enabled = true
+        xml.required = true
+        html.required = true
         classDirectories.setFrom(
                 files(
                         fileTree(
