@@ -75,3 +75,16 @@ task jacoco(type: JacocoReport, dependsOn: "testDebugUnitTest") {
     sourceDirectories.from files('src/main/kotlin')
     executionData.from files('build/jacoco/testDebugUnitTest.exec')
 }
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.unhappychoice'
+                artifactId = 'color-hash'
+                version = project.version
+            }
+        }
+    }
+}
